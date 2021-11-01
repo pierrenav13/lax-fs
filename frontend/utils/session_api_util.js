@@ -1,24 +1,22 @@
-
-
-export const postUser = (user) => {
+export const signup = (user) => {
     return $.ajax({
         method: 'POST',
         url: '/api/users',
-        data: { user },
+        data: { user: user }
     })
-};
+}
 
-export const postSession = (user) => {
+export const login = (user) => {
     return $.ajax({
-        method: 'POST',
+        method: "POST",
         url: '/api/session',
         data: { user },
     })
-};
+}
 
-export const deleteSession = () => {
+export const logout = () => {
     return $.ajax({
+        method: "DELETE",
         url: '/api/session',
-        method: 'DELETE',
     })
-};
+}
