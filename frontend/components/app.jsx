@@ -4,6 +4,7 @@ import LoginFormContainer from "./session_form/login_form_container";
 import SignupFormContainer from "./session_form/signup_form_container";
 import { AuthRoute } from "../utils/route_util";
 import { Link } from "react-router-dom";
+import NavBarContainer from "./navbar/navbar_container";
 
 const App = () => (
     <div>
@@ -11,8 +12,8 @@ const App = () => (
             <Link to='/'>
                 <h1>Lax</h1>
             </Link>
-            <h2>Hello, {currentUser.username}</h2>
-            <br />
+            <NavBarContainer />
+            
             {/* <Link to='/login'>
                 Login
             </Link>
@@ -20,7 +21,7 @@ const App = () => (
             <Link to='/signup'>
                 Signup
             </Link> */}
-            
+
         </header>
 
         <AuthRoute path="/login" component={LoginFormContainer} />
