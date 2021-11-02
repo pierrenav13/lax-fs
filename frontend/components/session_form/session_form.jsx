@@ -47,7 +47,7 @@ class SessionForm extends React.Component {
     render() {
         const path = this.props.formType === 'Log In' ? 'signup' : 'login'
         const buttonName = path === 'signup' ? 'Sign Up' : 'Log In'
-        let demo = '';
+        
         
         return (
             <div>

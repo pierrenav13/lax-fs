@@ -1,5 +1,4 @@
-
-
+require 'bcrypt'
 class User < ApplicationRecord
     #FIGVAPER
 
@@ -39,6 +38,5 @@ class User < ApplicationRecord
         self.save!
         self.session_token
     end
-
 
 end
