@@ -47,7 +47,10 @@ class SessionForm extends React.Component {
     render() {
         const path = this.props.formType === 'Log In' ? 'signup' : 'login'
         const buttonName = path === 'signup' ? 'Sign Up' : 'Log In'
-        
+        let hideEmail = false;
+        if (this.props.formType === 'Log In'){
+            hideEmail = true;
+        }
         
         return (
             <div>
@@ -55,7 +58,7 @@ class SessionForm extends React.Component {
                 <div>{this.renderErrors()}</div>
                 
                 <form onSubmit={this.handleSubmit}>
-                    <label>Email:
+                    <label hidden={hideEmail}>Email:
                         <input type="text" value={this.state.email} onChange={this.update('email')} />
                     </label>
                     <label>Username:
@@ -64,10 +67,10 @@ class SessionForm extends React.Component {
                     <label>Password:
                         <input type="password" value={this.state.password} onChange={this.update('password')} />
                     </label>
-                    <button onClick={this.demoUser}>DemoUser</button>
+                    <button hidden={!hideEmail}onClick={this.demoUser}>Demo User</button>
                     <input type="submit" value={this.props.formType} />
                 </form>
-                <Link to={`/${path}`}>{buttonName}</Link>
+                {/* <Link to={`/${path}`}>{buttonName}</Link> */}
             </div>
         )
     }
