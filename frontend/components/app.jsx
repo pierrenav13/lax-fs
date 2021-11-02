@@ -11,14 +11,16 @@ const App = () => (
             <Link to='/'>
                 <h1>Lax</h1>
             </Link>
+            <h2>Hello, {currentUser.username}</h2>
             <br />
-            <Link to='/login'>
+            {/* <Link to='/login'>
                 Login
             </Link>
             <br />
             <Link to='/signup'>
                 Signup
-            </Link>
+            </Link> */}
+            
         </header>
 
         <AuthRoute path="/login" component={LoginFormContainer} />

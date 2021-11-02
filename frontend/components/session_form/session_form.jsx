@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.demoUser = this.demoUser.bind(this);
     }
 
     handleSubmit(e) {
@@ -24,6 +25,12 @@ class SessionForm extends React.Component {
         return (e) => {
             this.setState({ [type]: e.currentTarget.value });
         }
+    }
+
+    demoUser(){
+        this.setState({ email: 'demo@email.com', username: 'demo', password: '123456' });
+        const demoUser = Object.assign({}, this.state);
+        this.props.processForm(demoUser)
     }
 
     renderErrors(){
@@ -40,6 +47,8 @@ class SessionForm extends React.Component {
     render() {
         const path = this.props.formType === 'Log In' ? 'signup' : 'login'
         const buttonName = path === 'signup' ? 'Sign Up' : 'Log In'
+        let demo = '';
+        
         return (
             <div>
                 <h3>{this.props.formType}</h3>
@@ -55,6 +64,7 @@ class SessionForm extends React.Component {
                     <label>Password:
                         <input type="password" value={this.state.password} onChange={this.update('password')} />
                     </label>
+                    <button onClick={this.demoUser}>DemoUser</button>
                     <input type="submit" value={this.props.formType} />
                 </form>
                 <Link to={`/${path}`}>{buttonName}</Link>
