@@ -54,7 +54,7 @@ class SessionForm extends React.Component {
         
         return (
             <div className='s-form'>
-                <h3>{this.props.formType}</h3>
+                <h3>{this.props.formType} to Lax</h3>
                 <br />
                 <div>{this.renderErrors()}</div>
                 

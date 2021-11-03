@@ -1,5 +1,5 @@
 class Subscription < ApplicationRecord
-
+    
 
 
 end

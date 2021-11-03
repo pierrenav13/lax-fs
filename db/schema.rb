@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_201213) do
+ActiveRecord::Schema.define(version: 2021_11_03_201906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 2021_11_02_201213) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "chain_id", null: false
-    t.string "chain_type", null: false
+    t.integer "chainable_id", null: false
+    t.string "chainable_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chain_id"], name: "index_subscriptions_on_chain_id"
+    t.index ["chainable_id", "chainable_type"], name: "index_subscriptions_on_chainable_id_and_chainable_type"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
