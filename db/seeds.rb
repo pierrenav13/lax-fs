@@ -8,3 +8,9 @@
 User.destroy_all
 Channel.destroy_all
 demoUser = User.create!({email: 'demo@email.com', username: 'demo', password: '123456'})
+user1 = User.create!({email: 'pnavarin@gmail.com', username: 'pierrenav', password: '123456'})
+
+channel1 = Channel.create!({name: 'general', admin_id: user1.id, public: true})
+channel2 = Channel.create!({name: 'homework', description: 'For help with homework', admin_id: demoUser.id, public: true})
+
+
