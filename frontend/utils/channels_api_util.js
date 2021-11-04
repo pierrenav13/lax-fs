@@ -7,9 +7,33 @@ export const fetchAllChannels = () => {
     })
 }
 
-export const fetchChannel = (channel) => {
+export const fetchChannel = (id) => {
     return $.ajax({
         method: 'GET',
-        url: `/api/channels/${channel.id}`
+        url: `/api/channels/${id}`
     })
 }
+
+export const createChannel = channel => (
+    $.ajax({
+        method: "POST",
+        url: `/api/channels`,
+        data: { channel }
+    })
+)
+
+export const updateChannel = channel => (
+    $.ajax({
+        method: "PATCH",
+        url: `/api/channels/${channel.id}`,
+        data: { channel }
+    })
+)
+
+export const deleteChannel = id => (
+    $.ajax({
+        method: "DELETE",
+        url: `/api/channels/${id}`
+    })
+)
+
