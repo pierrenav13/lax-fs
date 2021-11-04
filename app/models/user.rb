@@ -7,6 +7,26 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
 
     after_initialize :ensure_session_token
+
+    has_many :owned_channels,
+        foreign_key: :admin_id,
+        class_name: :Channel
+
+    has_many :subscriptions,
+        foreign_key: :user_id,
+        class_name: :Subscription,
+        dependent: :destroy
+
+    has_many :channels,
+        through: :subscriptions,
+        source: :chainable,
+        source_type: 'Channel'
+
+
+
+
+
+
     attr_reader :password
 
     def self.generate_session_token
