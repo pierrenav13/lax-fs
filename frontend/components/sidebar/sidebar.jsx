@@ -6,6 +6,10 @@ class Sidebar extends React.Component{
         super(props)
     }
 
+    componentDidMount(){
+        this.props.requestAllChannels();
+    }
+
     render(){
         return(
             <div>

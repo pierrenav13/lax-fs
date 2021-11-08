@@ -10,17 +10,10 @@ const App = () => (
     <div>
         <header>
             <Link to='/'>
-                <h1>Lax</h1>
+                <h1 className='title'>Lax</h1>
             </Link>
             <NavBarContainer />
             
-            {/* <Link to='/login'>
-                Login
-            </Link>
-            <br />
-            <Link to='/signup'>
-                Signup
-            </Link> */}
 
         </header>
 

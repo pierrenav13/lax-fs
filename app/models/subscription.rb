@@ -1,5 +1,5 @@
 class Subscription < ApplicationRecord
-    validates :user_id, :chainable_type, :chainable_id presence: true
+    validates :user_id, :chainable_type, :chainable_id, presence: true
 
     belongs_to :chainable,
         polymorphic: true

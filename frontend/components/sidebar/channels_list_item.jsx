@@ -6,7 +6,7 @@ class ChannelsListItem extends React.Component {
 
     render(){
         return (
-            <li>{this.props.channel.name}</li>
+            <li><a href="#">{this.props.channel.name}</a></li>
         )
     }
 }

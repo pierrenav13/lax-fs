@@ -14,6 +14,7 @@ user1 = User.create!({email: 'pnavarin@gmail.com', username: 'pierrenav', passwo
 
 channel1 = Channel.create!({name: 'general', admin_id: user1.id, public: true})
 channel2 = Channel.create!({name: 'homework', description: 'For help with homework', admin_id: demoUser.id, public: true})
+channel3 = Channel.create!({name: 'resources', description: '', admin_id: demoUser.id, public: true})
 
 
 subscription1 = Subscription.create!({user_id: user1.id, chainable_id: channel1.id, chainable_type: 'Channel' })

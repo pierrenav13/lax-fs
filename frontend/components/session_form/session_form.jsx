@@ -54,30 +54,31 @@ class SessionForm extends React.Component {
         
         return (
             <div className='s-form'>
-                <h3>{this.props.formType} to Lax</h3>
+                <h3 className='s-head'>{this.props.formType} to Lax</h3>
                 <br />
+                <div className='s-message'>We suggest using the <span className="bold">email address you use at work.</span></div>
                 <div>{this.renderErrors()}</div>
                 
-                <form onSubmit={this.handleSubmit}>
+                <form className='s-f' onSubmit={this.handleSubmit}>
                     <br />
-                    <label hidden={hideEmail}>Email:
+                    <label >Email:
                         <br />
-                        <input type="text" value={this.state.email} onChange={this.update('email')} />
+                        <input className='s-input' type="text" value={this.state.email} onChange={this.update('email')} />
                     </label>
                     <br />
-                    <label>Username:
+                    <label hidden={hideEmail}>Username:
                         <br />
-                        <input type="text" value={this.state.username} onChange={this.update('username')} />
+                        <input className='s-input' type="text" value={this.state.username} onChange={this.update('username')} />
                     </label>
                     <br />
                     <label>Password:
                         <br />
-                        <input type="password" value={this.state.password} onChange={this.update('password')} />
+                        <input className='s-input' type="password" value={this.state.password} onChange={this.update('password')} />
                     </label>
                     <br />
                     <br />
-                    <button hidden={!hideEmail}onClick={this.demoUser}>Demo User</button>
-                    <input type="submit" value={this.props.formType} />
+                    <button className='s-button' hidden={!hideEmail}onClick={this.demoUser}>Demo User</button>
+                    <button className='s-button' type="submit">{this.props.formType} with Email</button>
                 </form>
                 {/* <Link to={`/${path}`}>{buttonName}</Link> */}
             </div>
