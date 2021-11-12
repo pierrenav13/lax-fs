@@ -39,7 +39,12 @@ li {
 
 .message-input{
   height: 10%;
-  width: 80%;
+  width: 320%;
+}
+
+.message-form{
+  display: flex;
+  width: 200%;
 }
 
 .message-list li{
