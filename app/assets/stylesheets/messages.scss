@@ -13,14 +13,40 @@ li {
 .chatroom-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  //align-items: center;
 }
 .message-list {
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
-  height: 200px;
-  width: 200px;
-  border: solid gray 1px;
+  height: 600px;
+  width: 550px;
+  margin-left: -15px;
+  
+  // border: solid gray 1px;
 }
+.message-list ul, ol{
+  list-style-type: none;
+}
+
+.message-list li div{
+  padding-top: 2px;
+}
+
+.message-username{
+  font-weight: 500;
+}
+
+.message-input{
+  height: 10%;
+  width: 80%;
+}
+
+.message-list li{
+  // border-top: solid rgba(139, 136, 129, 0.63) 1px;
+  border-bottom: solid rgba(139, 136, 129, 0.63) 1px;
+}
+
 .load-button {
   position: absolute;
   top: 5px;

@@ -11,6 +11,7 @@ class Sidebar extends React.Component{
     }
 
     render(){
+        // console.log(this.props)
         return(
             <div>
                 <h2>{this.props.currentUser.username}</h2>

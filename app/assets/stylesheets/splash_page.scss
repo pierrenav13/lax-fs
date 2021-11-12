@@ -2,10 +2,9 @@
 
 $lax-blue: rgb(0, 87, 138);
 $text-color: gray;
+$background-color: rgba(139, 154, 160, 0.753);
 .log-sign{
-    background-color: darken($lax-blue, 1);
-    padding: 3px;
-    padding-left: 1px;
+    margin-left: -1%;
     font-size: 13pt;
 }
 
@@ -13,16 +12,42 @@ $text-color: gray;
     cursor: pointer;
 }
 
-.sidebar{
-    background-color: lighten($lax-blue, 2);
-    width: 100px;
-    // padding-top: 5px;
-    // height: 1000px;
+.greeting .header{
+    background-color: $lax-blue;
+    margin: 0px;
+    padding: 10px;
+}
+
+#s-bar{
+    background-color: $lax-blue;
+    width: 20%;
+    height: 675px;
+    padding-left: 20px;
+}
+
+#s-bar h3{
+    font-size: 12pt;
+}
+
+#s-bar h2{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-top: solid $background-color 1px;
+    border-bottom: solid $background-color 1px;
+}
+
+#s-bar h4{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.c-list{
+    list-style-type: none;
 }
 
 body{
     font-family: 'Open Sans', sans-serif;
-    background: rgb(255, 252, 233);
+    background: rgb(240, 238, 230);
     color: black;
     text-decoration: none;
     font-size: 12pt;
@@ -45,12 +70,18 @@ h3{
 }
 
 .title{
-    background-color: darken($lax-blue, 1);
+    //background-color: darken($lax-blue, 1);
+    margin-left: -1%;
     font-size: 20pt;
     text-decoration: none;
 }
 
 .s-form{
+    position: absolute;
+    top: 20px;
+    left: 25%;
+    background-color: $background-color;
+    z-index: 5;
     font-family: 'Open Sans', sans-serif;
     padding-top: 10px;
     display: flex;
@@ -59,6 +90,17 @@ h3{
     align-items: center;
     width: 50%;
     margin: 0 auto;
+}
+
+#h-button{
+    font-size: 11pt;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 60%;
+}
+
+.h-buttons{
+    display: flex;
 }
 
 .s-button{
@@ -70,8 +112,9 @@ h3{
     font-weight: 600;
     padding-left: 40px;
     padding-right: 40px;
-    border-radius: 6px;
+    border-radius: 5px;
     border-color: $lax-blue;
+    border: none;
 }
 
 .s-head{
@@ -121,4 +164,102 @@ h4{
 
 .s-message{
     color: rgb(80, 80, 80);
+}
+
+.header h1{
+    font-weight: 600;
+    font-size: 18pt;
+}
+
+.header{
+    //background-color: darken($lax-blue, 1);
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    padding-left: 1px;
+    //margin-left: -1%;
+}
+
+
+//SPLASH PAGE STYLING
+.splash-info{
+    display: flex;
+    flex-direction: column;
+    // width: 40%
+}
+
+
+#splash-1{
+    display: flex;
+    justify-content: space-around;
+}
+
+#splash-1 img{
+    width: 85%;
+    height: 90%;
+}
+
+#splash-1a{
+    font-size: 30pt;
+    font-weight: 600;
+}
+
+#splash-1b{
+    font-size: 11pt;
+    font-weight: 400;
+}
+
+#s-img-div{
+    margin-left: 10%;
+}
+
+#splash-2{
+    display: flex;
+    justify-content: space-around;
+}
+
+#splash-2 img{
+    width: 85%;
+    height: 90%;
+    border-radius: 6px;
+}
+
+#splash-2 h3{
+    font-weight: 500;
+}
+
+#splash-2 p{
+    font-size: 11pt;
+}
+
+#splash-1:first-child h2,p{
+    width: 110%
+}
+
+#splash-3 h3{
+    font-weight: 500;
+    padding-bottom: 1%;
+}
+
+#splash-3 p{
+    font-size: 11pt;
+}
+
+#splash-4{
+    display: flex;
+}
+
+#splash-4 img{
+    width: 80%;
+    height: 90%;
+    margin-left: 15%;
+    border-radius: 6px;
+}
+
+#splash-4 h3{
+    font-weight: 500;
+}
+
+#splash-4 p{
+    font-size: 11pt;
 }

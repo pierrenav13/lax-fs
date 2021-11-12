@@ -8,6 +8,7 @@
 User.destroy_all
 Channel.destroy_all
 Subscription.destroy_all
+Message.destroy_all
 
 demoUser = User.create!({email: 'demo@email.com', username: 'demo', password: '123456'})
 user1 = User.create!({email: 'pnavarin@gmail.com', username: 'pierrenav', password: '123456'})
@@ -19,4 +20,5 @@ channel3 = Channel.create!({name: 'resources', description: '', admin_id: demoUs
 
 subscription1 = Subscription.create!({user_id: user1.id, chainable_id: channel1.id, chainable_type: 'Channel' })
 
+message1 = Message.create!({author_id: user1.id, body: 'Hey', messageable_type: 'Channel', messageable_id: channel1.id})
 

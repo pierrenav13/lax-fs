@@ -10,6 +10,9 @@ class ChannelsList extends React.Component{
     render(){
         return(
             <div>
+                <h3>
+                    All DM's
+                </h3>
                 <h4>Channels</h4>
                 <ul className='c-list'>
                     {this.props.channels.map(channel => {
@@ -18,6 +21,7 @@ class ChannelsList extends React.Component{
                             channel={channel}
                             />
                     })}
+                    <li>Add channel</li>
                 </ul>
             </div>
         )

@@ -10,14 +10,27 @@ class ChatRoom extends React.Component {
 
     componentDidMount() {
         App.cable.subscriptions.create(
-            { channel: "ChatChannel",  },
+            { 
+                channel: "ChatChannel", 
+                type: 'Channel',
+                chatId: this.props.channelId
+            },
             {
                 received: data => {
-                    this.setState({
-                        messages: this.state.messages.concat(data.message)
-                    });
+                    console.log(data)
+                    //debugger
+                    switch(data.type){
+                        case "message":
+                            this.props.receiveMessage(data.message);
+                            this.setState({ messages: this.state.messages.concat(data.message)})
+                            break;
+                    }
+                    //this.props.receiveMessage(data.message)
+                    //Need action to add a new message to existing messages and pass as prop
                 },
                 speak: function (data) {
+                    // debugger
+                    console.log(data)
                     return this.perform("speak", data);
                 },
                 load: function () { return this.perform("load") }
@@ -31,27 +44,34 @@ class ChatRoom extends React.Component {
     }
 
     componentDidUpdate() {
-        this.bottom.current.scrollIntoView();
+        //this.props.requestAllMessages(this.props.channel.id)
+        //this.bottom.current.scrollIntoView();
     }
 
     render() {
         const messageList = this.state.messages.map(message => {
+            console.log(message)
             return (
                 <li key={message.id}>
-                    {message}
+                    <div>
+                        <p className='message-username'>demo</p>
+                        <p>{message.created_at.toLocaleString}</p>
+                    </div>
+                    
+                    <div>{message.body}</div>
+                    
                     <div ref={this.bottom} />
                 </li>
             );
         });
         return (
             <div className="chatroom-container">
-                <div>ChatRoom</div>
                 {/* <button className="load-button"
                     onClick={this.loadChat.bind(this)}>
                     Load Chat History
                 </button> */}
                 <div className="message-list">{messageList}</div>
-                <MessageForm />
+                <MessageForm currentUser={this.props.currentUser}/>
             </div>
         );
     }

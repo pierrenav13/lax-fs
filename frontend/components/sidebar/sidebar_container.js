@@ -3,6 +3,7 @@ import { requestAllChannels } from "../../actions/channel_actions";
 import Sidebar from "./sidebar";
 
 const mSTP = (state) => {
+    console.log(state)
     return {
         currentUser: state.entities.users[state.session.id],
         channels: Object.values(state.entities.channels)
