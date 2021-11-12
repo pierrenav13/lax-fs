@@ -34,8 +34,8 @@ const Navbar = (props) => {
                 </div>
                 <br />
                 <div id='splash-2'>
-                    <div >
-                        <img src="https://a.slack-edge.com/b7cc858/marketing/img/homepage/self-serve-campaign/inline-images/video-thumbnail@2x.jpg" alt="Slack2" />
+                    <div id='ppf'>
+                        <img  src="https://media.istockphoto.com/vectors/3d-road-sign-saying-present-and-past-and-future-vector-id501689867?k=20&m=501689867&s=612x612&w=0&h=yvNjx59gtzF2F895uCY7TG001Fu53egRgwLXFNS5oBg=" alt="Slack2" />
                     </div>
                     <div>
                         <h3>Now is your moment to build a better tomorrow</h3>
@@ -78,7 +78,7 @@ const Navbar = (props) => {
                             Respond faster with emoji, keep conversations focused in channels, and simplify all your communication into one place.
                         </p>
                     </div>
-                    <div><img src="https://www.beefmagazine.com/sites/beefmagazine.com/files/mgmt-matters-teamwork-katleho-Seisa-GettyImages.jpg" alt="Slack5" /></div>
+                    <div className='last-image'><img src="https://www.beefmagazine.com/sites/beefmagazine.com/files/mgmt-matters-teamwork-katleho-Seisa-GettyImages.jpg" alt="Slack5" /></div>
                 </div>
                 <br />
                 <div>

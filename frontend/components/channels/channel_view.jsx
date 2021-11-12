@@ -17,6 +17,7 @@ class ChannelView extends React.Component{
             <div className='greeting'>
                 <div className='header'>
                     <div><h1>lax</h1></div>
+                    <input type="text" placeholder='Search not Implemented Yet' />
                     <div className='log-sign'>
                         <a onClick={this.props.logout}>Log Out</a>
                     </div>
