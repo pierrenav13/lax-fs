@@ -13,7 +13,7 @@ $background-color: rgba(139, 154, 160, 0.753);
 }
 
 .greeting .header{
-    background-color: $lax-blue;
+    background-color: darken($lax-blue, 4);
     margin: 0px;
     padding: 10px;
 }

@@ -6,6 +6,7 @@ class ChatRoom extends React.Component {
         super(props);
         this.state = { messages: [] };
         this.bottom = React.createRef();
+        this.loadChat = this.loadChat.bind(this);
     }
 
     componentDidMount() {
@@ -36,6 +37,7 @@ class ChatRoom extends React.Component {
                 load: function () { return this.perform("load") }
             }
         );
+        //this.loadChat();
     }
 
     loadChat(e) {
