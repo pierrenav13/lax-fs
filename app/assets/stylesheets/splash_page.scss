@@ -108,7 +108,7 @@ h3{
     top: 20px;
     left: 25%;
     background-color: $background-color;
-    z-index: 5;
+    z-index: 30;
     font-family: 'Open Sans', sans-serif;
     padding-top: 10px;
     display: flex;
@@ -289,4 +289,8 @@ h4{
 
 #splash-4 p{
     font-size: 11pt;
+}
+
+#nav-comp{
+    z-index: -10;
 }

@@ -1,4 +1,4 @@
-import { requestAllMessages, receiveMessage } from "../../actions/message_actions"
+import { requestAllMessages, receiveMessage, receiveMessages } from "../../actions/message_actions"
 import ChatRoom from "./chat_room"
 import { connect } from "react-redux"
 
@@ -15,7 +15,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch, ownProps) => {
     return {
         requestAllMessages: (channelId) => dispatch(requestAllMessages(channelId)),
-        receiveMessage: (message) => dispatch(receiveMessage(message))
+        receiveMessage: (message) => dispatch(receiveMessage(message)),
+        receiveMessages: (messages) => dispatch(receiveMessages(messages))
     }
 }
 

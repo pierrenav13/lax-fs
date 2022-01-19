@@ -13,7 +13,7 @@ const App = () => (
             {/* <Link to='/'>
                 <h1 className='title'>Lax</h1>
             </Link> */}
-            <NavBarContainer />
+            <NavBarContainer id='nav-comp'/>
         </header>
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />

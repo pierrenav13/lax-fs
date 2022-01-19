@@ -10,4 +10,6 @@ class Api::MessagesController < ApplicationController
         render :index
     end
 
+    
+
 end

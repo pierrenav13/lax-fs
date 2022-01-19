@@ -10,6 +10,7 @@ class ChatRoom extends React.Component {
     }
 
     componentDidMount() {
+        let that = this;
         App.cable.subscriptions.create(
             { 
                 channel: "ChatChannel", 
@@ -22,9 +23,14 @@ class ChatRoom extends React.Component {
                     //debugger
                     switch(data.type){
                         case "message":
-                            this.props.receiveMessage(data.message);
-                            this.setState({ messages: this.state.messages.concat(data.message)})
+                            that.props.receiveMessage(data.message);
+                            that.setState({ messages: that.state.messages.concat(data.message)})
                             break;
+                        case 'messages':
+                            that.props.receiveMessage(data.message)
+                            that.setState({ messages: data.messages })
+
+
                     }
                     //this.props.receiveMessage(data.message)
                     //Need action to add a new message to existing messages and pass as prop
@@ -34,10 +40,15 @@ class ChatRoom extends React.Component {
                     console.log(data)
                     return this.perform("speak", data);
                 },
-                load: function () { return this.perform("load") }
+                load: function () { 
+                    console.log( this.perform("load") )
+                    // let that = this;
+                    that.setState( {messages: this.perform("load") }) 
+                    that.props.receiveMessages(this.perform("load"));
+                }
             }
         );
-        //this.loadChat();
+        // this.loadChat();
     }
 
     loadChat(e) {
@@ -46,8 +57,8 @@ class ChatRoom extends React.Component {
     }
 
     componentDidUpdate() {
-        //this.props.requestAllMessages(this.props.channel.id)
-        //this.bottom.current.scrollIntoView();
+        // this.props.requestAllMessages(this.props.channelId)
+        // this.bottom.current.scrollIntoView();
     }
 
     render() {
@@ -68,10 +79,10 @@ class ChatRoom extends React.Component {
         });
         return (
             <div className="chatroom-container">
-                {/* <button className="load-button"
+                <button className="load-button"
                     onClick={this.loadChat.bind(this)}>
                     Load Chat History
-                </button> */}
+                </button>
                 <div className="message-list">{messageList}</div>
                 <MessageForm currentUser={this.props.currentUser}/>
             </div>

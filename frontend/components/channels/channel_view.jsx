@@ -9,10 +9,10 @@ class ChannelView extends React.Component{
 
     componentDidMount(){
         this.props.requestAllChannels()
+        this.props.requestSubscriptions()
     }
     
     render(){
-        
         return (
             <div className='greeting'>
                 <div className='header'>

@@ -88,8 +88,8 @@ const Navbar = (props) => {
         </nav>
     );
     const personalGreeting = () => (
-        // <ChannelViewContainer />
         <Redirect to="/channels/4" />
+        // <ChannelViewContainer />
         // <div className='greeting'>
         //     <div className='header'>
         //         <div><h1>lax</h1></div>

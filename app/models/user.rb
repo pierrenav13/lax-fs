@@ -23,10 +23,6 @@ class User < ApplicationRecord
         source_type: 'Channel'
 
 
-
-
-
-
     attr_reader :password
 
     def self.generate_session_token
