@@ -1,47 +1,63 @@
 class Api::ChannelsController < ApplicationController
-    def create
-        @channel = Channel.new(channel_params)
-        @channel.admin_id = current_user.id
-        if @channel.save
-            render :show
+    def index
+        if params[:user_id]
+            @channels_and_dms = { 
+                channels: current_user.joined_channels.includes(:members),
+                dms: current_user.direct_messages.includes(:members)
+            }
+            render :index
         else
-            render json: @channel.errors.full_messages, status: 422
+            @channels = Channel.all
+            render ( channel_params[:search] ? "api/channels/search" : :index )
         end
     end
 
     def show
-        @channel = Channel.find(params[:id])
-        render :show
+        @channel = Channel.includes(:members, :messages).find(params[:id])
     end
-
-    def index
-        @channels = Channel.all
-        render :index
-    end
-
-     def update
-        @channel = Channel.find(params[:id])
-        if @channel.update(channel_params)
-        render :show
+    
+    def create
+        create_params = { 
+            admin_id: current_user.id,
+            is_private: channel_params[:isPrivate],
+            name: channel_params[:name],
+            topic: channel_params[:topic].empty? ? "Add a topic." : channel_params[:topic]
+        }
+        @channel = Channel.new(create_params)
+        if @channel.save
+            Membership.create(user_id: current_user.id, joinable_type: "Channel", joinable_id: @channel.id)
+            render :create_stub
         else
-        render json: @channel.errors.full_messages, status: 401
+            render json: @channel.errors.full_messages, status: 401
         end
     end
-
+    
+    def update
+        @channel = Channel.find(params[:id])
+        if current_user.id == @channel.admin_id
+            if @channel.update
+                @channel.includes(:members)
+                render :show
+            else
+                render json: @channel.errors.full_messages, status: 401
+            end
+        end
+    end
+    
     def destroy
-        @channel = Channel.find_by(id: params[:id])
-        if @channel && current_user.id === @channel.admin_id
-            Channel.destroy(@channel.id)
-            render :show
-        else
-            render json: ['Not the admin of the Channel'], status: 401
+        channel = Channel.find(params[:id])
+        if channel && current_user.id == channel.admin_id
+            channel.destroy
         end
+    end
+
+    def already_taken
+        existing = Channel.find_by(name: channel_params[:name]) || User.find_by(username: channel_params[:name])
+        render json: { "inUse": !!existing }
     end
 
     private
-
     def channel_params
-        params.require(:channel).permit(:name, :description, :public)
+        params.require(:channel).permit(:name, :topic, :isPrivate, :search)
     end
-
 end

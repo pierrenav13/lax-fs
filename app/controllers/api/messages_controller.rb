@@ -1,34 +1,23 @@
 class Api::MessagesController < ApplicationController
-    
-    def index 
-        @messages = Message.get_by_channel(channel_id) 
+    def index
+        if params[:channel_id]
+            @messages = Message.where( messageable_id: params[:channel_id], messageable_type: "Channel" ).includes(:author)
+        else 
+            @messages = Message.where( messageable_id: params[:direct_message_id], messageable_type: "DirectMessage" ).includes(:author)
+        end
+        # @messages = Message.all
+    end
+
+    def show
+        @message = Message.includes(:author).find(params[:id])
+    end
+
+    def create
     end
 
     def update
-        @message = Message.find(params[:id])
-        if @message.update
-            render :show
-        else 
-            @message.errors.full_messages
-        end  
+    end
 
-    end 
-
-    
-
-
-    def destroy 
-        @message = Message.find(params[:id])
-        @message.destroy!
-    end 
-
-    def message_params
-        params.require(:message).permit(:body, :author_id, :channel_id)
-    end 
-
-    def params 
-        params[:parent_message_id]
-    end 
-
-   
+    def destroy
+    end
 end

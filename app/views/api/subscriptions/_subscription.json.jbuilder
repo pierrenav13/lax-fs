@@ -1,1 +1,0 @@
-json.extract! subscription, :id, :user_id, :chainable_id, :chainable_type

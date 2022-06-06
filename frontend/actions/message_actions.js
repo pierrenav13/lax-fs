@@ -1,26 +1,48 @@
-import * as APIUtils from '../utils/messages_api_util'
-export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
-export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
+import * as MessageAPIUtil from "../utils/message_api_utils";
 
+export const RECEIVE_CHANNEL_MESSAGES = "RECEIVE_CHANNEL_MESSAGES"
+export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE"
+export const REMOVE_MESSAGE = "REMOVE_MESSAGE"
 
-export const receiveMessages = (messages) => {
-    return {
-        type: RECEIVE_MESSAGES,
-        messages
+const receiveChannelMessages = ({ messages, id, users }) => (
+    {
+        type: RECEIVE_CHANNEL_MESSAGES,
+        messages,
+        id,
+        users,
     }
-}
+)
 
-export const receiveMessage = (message) => {
-    return {
+export const receiveMessage = ({ message, cId }) => (
+    {
         type: RECEIVE_MESSAGE,
-        message
+        message,
+        cId,
     }
+)
+
+export const removeMessage = ({ id, cId }) => (
+    {
+        type: REMOVE_MESSAGE,
+        id,
+        cId
+    }
+)
+
+export const fetchChannelMessages = channelId => {
+    return dispatch => MessageAPIUtil.fetchChannelMessages(channelId).then(
+        res => dispatch(receiveChannelMessages(res))
+    )
 }
 
+export const fetchDirectMessages = dmId => {
+    return dispatch => MessageAPIUtil.fetchDirectMessages(dmId).then(
+        res => dispatch(receiveChannelMessages(res))
+    )
+}
 
-export const requestAllMessages = (channelId) => (dispatch) => {
-    return (
-        APIUtils.fetchMessages(channelId)
-            .then((messages) => dispatch(receiveMessages(messages)))
+export const fetchNewMessage = id => {
+    return dispatch => MessageAPIUtil.fetchNewMessage(id).then(
+        res => dispatch(receiveChannelMessages(res))
     )
 }

@@ -1,26 +1,38 @@
+# == Schema Information
+#
+# Table name: channels
+#
+#  id         :bigint           not null, primary key
+#  name       :string           not null
+#  topic      :string           default("Add a topic"), not null
+#  admin_id   :integer          not null
+#  is_private :boolean          default(FALSE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Channel < ApplicationRecord
-    validates :name, :admin_id, presence: true
-    validates :public, inclusion: { in: [true, false] }
+    validates :name, uniqueness: true
+    validates :topic, :name, :admin_id, presence: true
+    before_validation :ensure_topic
+    
+    has_many :memberships,
+        as: :joinable,
+        dependent: :destroy
 
     belongs_to :admin,
-        foreign_key: :admin_id,
-        class_name: :User
-    
-    has_many :channel_members,
-        foreign_key: :chainable_id,
-        class_name: :Subscription,
-        dependent: :destroy
+        class_name: :User,
+        foreign_key: :admin_id
 
     has_many :members,
-        through: :channel_members,
-        source: :user,
+        through: :memberships,
+        source: :user
+    
+    has_many :messages,
+        as: :messageable,
         dependent: :destroy
 
-
-    def self.get_channels_by_user(user)
-        Channel.joins(:members).where('channel_members.user_id = ?', user.id)
-    end 
-
-
-
+    private
+    def ensure_topic
+        self.topic ||= "Add a topic."
+    end
 end

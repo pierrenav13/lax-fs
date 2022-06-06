@@ -1,0 +1,292 @@
+body {
+    font-family: $splash-sans-serif;
+}
+.mainpage-head {
+    width: 100%;
+    // position: relative;
+    // z-index: 1;
+    .search-header {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        height: 38px;
+        background: mix($dark-blue, $hover-dark-blue, $weight: 50%);
+        color: $background;
+        width: 100%;
+        // border-bottom: 1px solid rgba($color: $background, $alpha: 0.2);
+        @include flex(row, center, unset);
+        .header-searchbar {
+            margin: 0 auto;
+            width: 500px;
+            height: 24px;
+            border: 1px solid rgba($color: $background, $alpha: 0.25);
+            background: rgba($color: $background, $alpha: 0.05);
+            border-radius: 6px;
+            padding: 0 8px;
+            font-size: 12px;
+            @include flex(row, center, space-between);
+            svg {
+                font-size: 14px;
+                margin-right: 2px;
+
+            }
+            &:hover {
+                border-color: rgba($color: $background, $alpha: 0.5);
+                cursor: pointer;
+            }
+            .header-searchbar-dropdown {
+                width: 800px;
+                min-height: 109px;
+                background: $background;
+                position: absolute;
+                top: 4px;
+                max-height: 460px;
+                border: 1px solid $dark-tan;
+                border-radius: 8px;
+                left: calc(50% - 400px);
+                color: $text;
+
+                // overflow-x: hidden;
+                font-size: 14px;
+                padding-bottom: 12px;
+                &:hover { 
+                    cursor: default;
+                }
+
+                    .input {
+                        @include flex(row, center, flex-start);
+                        height: 44px;
+                        border-bottom: 1px solid $dark-tan;
+                        margin-bottom: 12px;
+                        svg {
+                            color: $light-grey-tan;
+                            height: 14px;
+                            width: 14px;
+                            position: absolute;
+                            left: 30px;
+                        }
+                        input {
+                            width: 674px;
+                            height: 22px;
+                            margin-left: 59px;
+                            background: $background;
+                        }
+                        button {
+                            position: relative;
+                            top: -2px;
+                            right: 7px;
+                            &.clear {
+                                font-size: 13px;
+                                color: $light-grey-tan;
+                                font-weight: 400;
+                                height: 16px;
+                                width: 63px;
+                                padding: 0 16px;
+                                letter-spacing: -0.5px;
+                                border-right: 1px solid $dark-tan;
+                            }
+                            .x{
+                                // height: 20px;
+                                color: $lightest-text;
+                                font-weight: 300;
+                                font-size: 18px;
+                                transform: scale(1.75,1.13);
+                                position: absolute;
+                                right: 9px;
+                                top: -1.5px;
+                            }
+                        }
+                    }
+                    ul {
+                        max-height: 390px;
+                        overflow-y: auto;
+                        li {
+                        height: 40px;
+                        width: 100%;
+                        margin: unset;
+                        &.string {
+                            padding: 4px 28px 4px 60px;
+                            font-weight: 500;
+                            position: relative;
+                            svg {
+                                color: $light-grey-tan;
+                                height: 15px;
+                                width: 15px;
+                                position: absolute;
+                                left: 32px;
+                                top: 12px;
+                            }
+                            span {
+                                display: block;
+                                position: relative;
+                                bottom: -7px;
+                            }
+                            &:hover {
+                                cursor: default;
+                                color: $background;
+                                background: $link-blue;
+                                svg {
+                                    color: $background;
+                                }
+                            }
+                        }
+                        a {
+                            width: 100%;
+                            position: relative;
+                            @include flex(row, center, space-between);
+                            span {
+                                display: block;
+                            }
+                            // display: block;
+                            height: 100%;
+                            width: 100%;
+                            padding: 4px 28px 4px 60px;
+                            font-weight: 500;
+                            &:hover {
+                                background: $link-blue;
+                                color: $background;
+                                svg {
+                                    color: $background;
+                                }
+                            }
+                            svg {
+                                color: $light-grey-tan;
+                                height: 14px;
+                                width: 14px;
+                                position: absolute;
+                                left: 31px;
+                                top: 13px;
+                                transform: scale(0.9,1);
+                            }
+                        }
+                        &.no-search {
+                            position: relative;
+                            height: 40px;
+                            width: 100%;
+                            margin: unset;
+                            padding: 4px 28px 4px 60px;
+                            font-weight: 500;
+                            @include flex(row, center, flex-start);
+                            svg {
+                                color: $light-grey-tan;
+                                height: 14px;
+                                width: 14px;
+                                position: absolute;
+                                left: 30px;
+                                top: 8px;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        button:not(.search-button) {
+            margin-right: 16px;
+            height: 26px;
+            width: 26px;
+            svg {
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
+    .sub-header {
+        margin: 38px 0 0 260px;
+        height: 64px;
+        width: calc(100% - 260px);
+        border-bottom: 1px solid $dark-tan;
+        padding: 0 20px;
+        font-size: 14px;
+        @include flex(row,center,space-between);
+        .location-info {
+            height: 40px;
+            min-width: 386px;
+            position: relative;
+            &.dm {
+                line-height: 40px;
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            h2 {
+                font-size: 13.5px;
+                margin-left: 11px;
+                margin-top: 1px;
+                font-weight: 700;
+                line-height: 22px;
+                letter-spacing: -0.5px;
+                svg {
+                    height: 10.5px;
+                    width: 10.5px;
+                    position: absolute;
+                    color: black;
+                    top: 6px;
+                    left: 0;
+                    &.fa-lock {
+                        width: 8.5px;
+                        height: 12px;
+                    }
+                }
+            }
+            ul {
+                @include flex(row, flex-start, flex-start);
+                font-size: 12px;
+                color: $light-grey-tan;
+                li {
+                    min-width: 36px;
+                    padding: 0 6px;
+                    height: 18px;
+                    margin-top: -1px;
+                    &:first-of-type {
+                        margin-top: -3px;
+                        font-size: 14px;
+                        letter-spacing: 1.4px;
+                        margin-left: -6px;
+                    }
+                    svg {
+                        width: 11px;
+                        height: 13px;
+                        margin-right: 5px;
+                        position: relative;
+                        top: -1px;
+                    }
+                    &:nth-of-type(2) {
+                        // border-right: 1px solid $dark-tan;
+                        // content: " ";
+                        height: 12px;
+                        padding: unset;
+                        min-width: unset;
+                        width: 2px;
+                        margin: unset;
+                        background: rgba($color: $lighter-grey-tan, $alpha: 0.2);
+                        position: relative;
+                        bottom: -1.5px;
+                    }
+                }
+            }
+        }
+        .location-details {
+            @include flex(row, center, space-between);
+            width: 84px;
+            height: 36px;
+            padding: 8px;
+            border-radius: 4px;
+            vertical-align: center;
+            font-size: 12px;
+            color: $light-grey-tan;
+            &:hover {
+                background: $light-tan;
+                color: $lighter-text;
+            }
+            svg {
+                font-size: 20px;
+                margin-right: 8px;
+            }
+        }
+    }
+
+}

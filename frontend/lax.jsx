@@ -1,27 +1,31 @@
 import React from "react";
-import ReactDOM from 'react-dom';
-import Root from './components/root';
-import configureStore from './store/store';
-import { signup, login, logout } from './actions/session_actions';
-
-
-document.addEventListener('DOMContentLoaded', ( ) => {
-    const root = document.getElementById('root')
-    let store;
+import ReactDOM from "react-dom";
+import configureStore from "./store/store";
+import library from "./icons/library"
+import Root from "./components/root";
+import size from "lodash/size";
+document.addEventListener("DOMContentLoaded", () => {
+    const root = document.getElementById("root");
+    let preloadedState;
     if (window.currentUser) {
-        const preloadedState = {
+        preloadedState = {
             entities: {
-                users: { [window.currentUser.id]: window.currentUser }
+                users: {
+                    [window.currentUser.id]: window.currentUser,
+                }
             },
-            session: { id: window.currentUser.id }
-        };
-        store = configureStore(preloadedState);
-        //delete window.currentUser;
-    } else {
-        store = configureStore();
+            session: {
+                currentUserId: window.currentUser.id,
+            },
+            ui: {
+                modal: false,
+                mainChannel: window.mainChannel
+            }
+        }
+        delete window.currentUser
+        delete window.mainChannel
     }
-
-    window.store = store;
-    window.signup = signup;
+    const store = configureStore(preloadedState)
+    window.size = size
     ReactDOM.render(<Root store={store} />, root)
-})
+});

@@ -1,0 +1,479 @@
+.main-content {
+    height: calc(100vh - 38px);
+    margin-top: -64px;
+    @include flex(row, flex-start, flex-start)
+}
+
+.new-message-alert {
+    height: 28px;
+    overflow: hidden;
+    border-radius: 14px;
+    width: 170px;
+    background-color: $dark-blue;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 5px;
+    right: calc(50% - (170px / 2));
+    color: $background;
+    > section {
+        height: 100%;
+        &:hover {
+            background-color: $hover-dark-blue;
+            cursor: pointer;
+        }
+        &.see-new {
+            display: flex;
+            padding: 0 5px 0 10px;
+            width: 134px;
+            > span {
+                &.arrow {
+                    line-height: 24px;
+                    font-size: 20px;
+                    transform: scale(1, 0.75);
+                    display: block;
+                    padding-right: 7px;
+                }
+                &:not(.arrow) {
+                    line-height: 27px;
+                    font-size: 11px;
+                    font-weight: 600;
+                    display: block;
+                    margin-right: auto;
+                }
+            }
+        }
+        &.clear-new {
+            display: block;
+            font-size: 16px;
+            height: 100%;
+            width: 36px;
+            padding-top: 1px;
+            > span {
+                text-align: center;
+                transform: scale(1, 0.65);
+                display: block;
+            }
+        }
+    }
+}
+
+.message-list > div.bottom {
+    height: 10px;
+    margin: -100px 0 100px;
+} 
+
+.mainpage-body{
+    margin-top: 64px;
+    height: calc(100% - 64px);
+    width: 100%;
+    .show {
+        // overflow-y: auto;
+        height: 100%;
+        width: 100%;
+        padding-bottom: 28px;
+        background-color: $background;
+        @include flex(column, flex-start, flex-start);
+        .message-form {
+            width: calc(100vw - 260px - 2.8%);
+            min-height: 85px;
+            // overflow: hidden;
+            border: 1px solid $light-grey-tan;
+            border-radius: 4px;
+            margin: 4px 20px 0;
+            display: block;
+            // padding-bottom: 1px;
+            max-height: 399px;
+            // position: relative;
+            // max-height: calc(46.36vh + 47px);
+            flex: 1 0 auto;
+            // flex: 1 0 auto;
+            &.hidden {
+                display: none;
+            }
+            form {
+                // padding-bottom: 1px;
+                // max-height: 46.36vh;
+                // flex: 1 0 auto;
+                padding: 9px 10px 1px;
+                position: relative;
+                @include flex(column, flex-start,flex-start);
+                // max-height: 349px;
+                width: 100%;
+                // height: calc(100% - 45px);
+                // height: 100%;
+            }
+            .input {
+                border-radius: 4px 4px 0 0;
+                min-height: 20px;
+                height: 100%;
+                max-height: 340px;
+                // height: calc(100% - 45px);
+                // max-height: 548px;
+                overflow: auto;
+                margin-top: 2px;
+                width: 100%;
+                background: $background;
+                // padding-bottom: 5px;
+                scrollbar-width: thin;
+                scrollbar-color: mix($background, $lighter-grey-tan, $weight: 30%) transparent;
+                &::-webkit-scrollbar {
+                    width: 9px;
+                }
+                &::-webkit-scrollbar-track{
+                    border-radius: 3px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    -webkit-border-radius: 10px;
+                    border-radius: 10px;
+                    background: mix($background, $lighter-grey-tan, $weight: 30%);
+                    
+                }
+                textarea {
+                    overflow: auto;
+                    // max-height: 340px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    background: transparent;
+                    height: 100%;
+                    width: 100%;
+                    resize: none;
+                }
+            }
+            .bottom-space {
+                // flex: 1 0 auto;
+                border-radius: 0 0 4px 4px;
+                border-top: 1px solid $dark-tan;
+                height: 41px;
+                margin-top: 4px;
+                width: 100%;
+                display: block;
+                // padding-bottom: 1px;
+                position: relative;
+                bottom: 1px;
+                background: $light-tan;
+            }
+            &:not(.edit) {
+            .placeholder {
+                color: $lighter-grey-tan;
+                font-size: 15px;
+                font-weight: 400;
+                text-transform: scale(1.2,1);
+                position: absolute;
+                width: 97%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                // bottom: 75px;
+                // margin-left: 10px;
+                &.lock::after {
+                    content: "\f023";
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    display: block;
+                    height: 14px;
+                    width: 14px;
+                    position: absolute;
+                    top: 3px;
+                    left: 75px;
+                }
+                &.hash::after {
+                    content: "\f292";
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    display: block;
+                    height: 14px;
+                    width: 14px;
+                    position: absolute;
+                    top: 3px;
+                    left: 75px;
+                }
+                > span.space {
+                    display: inline-block;
+                    width: 18px;
+                }
+            }
+            button {
+                z-index: 1;
+                position: absolute;
+                // right: 1.33%;
+                align-self: flex-end;
+                bottom: -46px;
+                height: 32px;
+                width: 32px;
+                border-radius: 4px;
+                color: $lighter-grey-tan;
+                padding: 7px;
+                margin: 5px;
+                &:valid {
+                    background: $green;
+                    color: $background;
+                }
+                svg {
+                    transform: rotate(45deg);
+                    margin-bottom: 4px;
+                }
+            }
+        }
+        }
+        .chat-container {
+            flex: 1 1 auto;
+            max-height: 78.25vh;
+            min-height: 21.18vh;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            margin-right: 5px;
+            .message-list-container {
+                height: 100%;
+                width: 100%;
+                @include flex(column-reverse, flex-start, flex-start);
+                overflow: hidden;
+                scroll-snap-align: start;
+                scrollbar-width: thin;
+                scrollbar-color: mix($background, $lighter-grey-tan, $weight: 30%) transparent;
+                &::-webkit-scrollbar {
+                    width: 9px;
+                }
+                &::-webkit-scrollbar-track{
+                    border-radius: 3px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    -webkit-border-radius: 10px;
+                    border-radius: 10px;
+                    background: mix($background, $lighter-grey-tan, $weight: 30%);
+                    
+                }
+                &:hover {
+                    overflow-y: auto;
+                    .message-list {
+                        > :first-child {
+                            .message-tool {
+                                top: 5px;
+                            }
+                        }
+                        > .form-container {
+                            .message-form.edit {
+                                margin-right: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            .message-list {
+                > .form-container {
+                    display: block;
+                    padding-bottom: 1px;
+                    // max-height: 168px;
+                    background: mix($light-tan, $err-red, $weight: 95%);
+                    padding-top: 4px;
+                    .message-form.edit {
+                        background: $background;
+                        margin-top: unset;
+                    }
+                }
+                section.message-form.edit {
+                    position: relative;
+                    margin-bottom: 43px;
+                    margin-right: 29px;
+                    width: unset;
+                    form {
+                        position: static;
+                    }
+                    button {
+                        position: absolute;
+                        bottom: -36px;
+                        height: 28px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        letter-spacing: -1px;
+                        @include flex(row);
+                        border-radius: 4px;
+                        &.save {
+                            // color: mix($background, white, $weight: 50%);
+                            color: $background;
+                            width: 132px;
+                            left: 73px;
+                            background: $green;
+                            svg {
+                                transform: rotate(90deg) scale(1.1,1);
+                                margin-right: 14px;
+                                margin-left: 5px;
+                            }
+
+                        }
+                        &.cancel {
+                            color: $lighter-text;
+                            left: 0;
+                            width: 65px;
+                            border: 1px solid $lighter-grey-tan;
+                            background: mix($background, white, $weight: 50%);
+                        }
+
+                    }
+                }
+
+                // position: absolute;
+                // bottom: 0;
+                // max-height: 100%;
+                // height: 100%;
+                width: 100%;
+
+                list-style: none;
+                &.extra-space {
+                    margin-bottom: 24px;
+                    max-height: calc(100% - 24px);
+                }
+                li {
+                    width: 100%;
+                    padding: 8px 20px 8px 30px;
+                    white-space: pre-line;
+                    font-size: 14px;
+                    line-height: 20px;
+                    position: relative;
+                    @include flex(row, flex-start, flex-start);
+                    &:hover {
+                        background-color: rgba($color: $light-tan, $alpha: 0.6);
+                    }
+
+                    .message-tool {
+                        position: absolute;
+                        top: -15px;
+                        left: calc(100vw - 344px);
+                        height: 36px;
+                        // width: 132px;
+                        border: 1px solid $dark-tan;
+                        background: $background;
+                        border-radius: 4px;
+                        padding: 2px;
+                        color: $lighter-grey-tan;
+                        @include flex(row);
+                        svg {
+                            width: 14px;
+                            height: 14px;
+                        }
+                        button {
+                            height: 30px;
+                            width: 30px;
+                            // @include flex(row);
+                            padding: 6px 6px 8px 8px;
+                            position: relative;
+                            &:hover {
+                                background: $light-tan;
+                                border-radius: 4px;
+                                color: $text;
+                            }
+                            &.delete {
+                                &::after {
+                                    content: "\f056";
+                                    font-family: "Font Awesome 5 Free";
+                                    font-weight: 900;
+                                    font-size: 16px;
+                                }
+                            }
+                        }
+                    }
+                    &.message-stub {
+                        align-items: center;
+                        min-height: 30px;
+                        padding: 4px 20px 4px 68px;
+                        margin: -4px 0 -4px;
+                        @include flex(row-reverse, flex-end, flex-end);
+                        &:not(:hover) {
+                            margin-left: 7px;
+                        }
+                        aside {
+                            height: 100%;
+                            width: 73px;
+                            margin-left: -76px;
+                            margin-right: 10px;
+                            vertical-align: center;
+                            text-align: right;
+                            font-size: 11px;
+                            letter-spacing: -0.5px;
+                            color: $lighter-grey-tan;
+                        }
+                        .edited {
+                            color: #787873;
+                            font-size: 12px;
+                            margin-left: 4px;
+                        }
+
+                    }
+                    &.message-full {
+                        
+
+                        min-height: 52px;
+                        .avatar {
+                            min-width: 36px;
+                            min-height: 36px;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 3px;
+                            margin-right: 8px;
+                            overflow: none;
+                            background: $light-blue-grey;
+                        }
+                        .message-details {
+                            height: 100%;
+                            width: 100%;
+                            .edited {
+                                color: #787873;
+                                font-size: 12px;
+                                margin-left: 4px;
+                            }
+                            h3 {
+                                display: block;
+                                // margin-top: -3px;
+                                font-weight: 600;
+                                // margin: -6px 0 6px;
+                                span {
+                                    font-size: 11px;
+                                    font-weight: 400;
+                                    color: $lightest-text;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        height: 136px;
+        width: calc(100% - 260px);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        div {
+            svg {
+                font-size: 15px;
+                margin-left: 3px;
+            }
+            background: $light-tan;
+            height: 100%;
+            @include flex(column);
+            padding-right: 130px;
+            h1 {
+                @include flex(row, center, flex-start);
+                font-size: 17px;
+                margin-bottom: 26px;
+                strong {
+                    display: block;
+                    font-weight: 700;
+                }
+            }
+            button {
+                color: $background;
+                background: $green;
+                height: 36px;
+                width: 110px;
+                border-radius: 3px;
+                font-weight: 700;
+                font-size: 14px;
+                text-align: center;
+                vertical-align: center;
+            }
+        }
+    }
+}
