@@ -27,6 +27,7 @@ class AuthForm extends Component {
         this.props.processForm(this.state);
     }
 
+    
     render(){
         let errors = [];
         let that = this;
