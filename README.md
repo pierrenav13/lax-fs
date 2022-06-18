@@ -2,7 +2,6 @@
 Welcome to Lax! Lax is a clone of Slack, a prevalent messaging app . With Lax, users can create and join channels and send live messages to chat with other users. The live app can be accessed [here](https://lax-13.herokuapp.com/)
 
 
-
 ---
 
 ### Lax uses the following technologies:
