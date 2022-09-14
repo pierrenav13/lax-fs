@@ -38,7 +38,7 @@ ___
 
 
 ### Create new channels for new groups or topics <br><br>
-They'll be public by default, but you can make them private and not viewable in search<br><br>
+* They'll be public by default, but you can make them private and not viewable in search<br><br>
   ![Lax Channel](https://user-images.githubusercontent.com/85881627/172405380-9494243a-351f-4372-8ac0-ae35d8e6ef12.JPG)
 <br><br>
   
